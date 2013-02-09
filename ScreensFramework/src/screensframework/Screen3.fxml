@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" minWidth="174.0" prefHeight="150.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml" fx:controller="screensframework.Screen3Controller">
+  <children>
+    <VBox alignment="CENTER" prefHeight="153.0" prefWidth="174.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label text="Screen 3">
+          <font>
+            <Font size="18.0" />
+          </font>
+        </Label>
+        <Button mnemonicParsing="false" onAction="#goToScreen1" text="Go To Screen1" />
+        <Button mnemonicParsing="false" onAction="#goToScreen2" text="Go To Screen2" />
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>
