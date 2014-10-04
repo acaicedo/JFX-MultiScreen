@@ -69,7 +69,12 @@ public class ScreensFramework extends Application {
         
         mainContainer.setScreen(ScreensFramework.screen1ID);
         
-        Group root = new Group();
+        AnchorPane root = new AnchorPane();
+        root.getChildren().addAll(mainContainer);
+        root.setTopAnchor(mainContainer, 0.0);
+        root.setRightAnchor(mainContainer, 0.0);
+        root.setBottomAnchor(mainContainer, 0.0);
+        root.setLeftAnchor(mainContainer, 0.0);
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
