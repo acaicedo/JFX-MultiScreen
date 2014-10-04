@@ -75,7 +75,6 @@ public class ScreensFramework extends Application {
         root.setRightAnchor(mainContainer, 0.0);
         root.setBottomAnchor(mainContainer, 0.0);
         root.setLeftAnchor(mainContainer, 0.0);
-        root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
