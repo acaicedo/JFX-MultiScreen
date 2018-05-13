@@ -77,11 +77,11 @@ public class ScreensController  extends StackPane {
         return screens.get(name);
     }
     
-    public pControlledScreen getController(String name) {
+    public ControlledScreen getController(String name) {
     	return controllers.get(name);
     }
     
-    private void addController(String name, pControlledScreen myScreenControler) {
+    private void addController(String name, ControlledScreen myScreenControler) {
 		// TODO Auto-generated method stub
     	controllers.put(name, myScreenControler);
 	}
