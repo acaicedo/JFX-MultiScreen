@@ -61,6 +61,10 @@ public class Screen2Controller implements Initializable , ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+    @Override
+	public void runOnScreenChange() {
+        //TODO
+    }
     
     public void setScreenParent(ScreensController screenParent){
         myController = screenParent;
