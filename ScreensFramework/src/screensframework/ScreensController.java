@@ -61,6 +61,7 @@ public class ScreensController  extends StackPane {
     //Holds the screens to be displayed
 
     private HashMap<String, Node> screens = new HashMap<>();
+    private HashMap<String, ControlledScreen> controllers = new HashMap<>();
     
     public ScreensController() {
         super();
@@ -75,6 +76,15 @@ public class ScreensController  extends StackPane {
     public Node getScreen(String name) {
         return screens.get(name);
     }
+    
+    public ControlledScreen getController(String name) {
+    	return controllers.get(name);
+    }
+    
+    private void addController(String name, ControlledScreen myScreenControler) {
+		// TODO Auto-generated method stub
+    	controllers.put(name, myScreenControler);
+	}
 
     //Loads the fxml file, add the screen to the screens collection and
     //finally injects the screenPane to the controller.
@@ -85,6 +95,7 @@ public class ScreensController  extends StackPane {
             ControlledScreen myScreenControler = ((ControlledScreen) myLoader.getController());
             myScreenControler.setScreenParent(this);
             addScreen(name, loadScreen);
+            addController(name, myScreenControler);
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -103,25 +114,27 @@ public class ScreensController  extends StackPane {
             if (!getChildren().isEmpty()) {    //if there is more than one screen
                 Timeline fade = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
-                        new KeyFrame(new Duration(1000), new EventHandler<ActionEvent>() {
+                        new KeyFrame(new Duration(250), new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
                         getChildren().remove(0);                    //remove the displayed screen
                         getChildren().add(0, screens.get(name));     //add the screen
                         Timeline fadeIn = new Timeline(
                                 new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                                new KeyFrame(new Duration(800), new KeyValue(opacity, 1.0)));
+                                new KeyFrame(new Duration(250), new KeyValue(opacity, 1.0)));
                         fadeIn.play();
                     }
                 }, new KeyValue(opacity, 0.0)));
+                controllers.get(name).runOnScreenChange();
                 fade.play();
 
             } else {
                 setOpacity(0.0);
+                controllers.get(name).runOnScreenChange();  // new function to run on screen Change
                 getChildren().add(screens.get(name));       //no one else been displayed, then just show
                 Timeline fadeIn = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                        new KeyFrame(new Duration(2500), new KeyValue(opacity, 1.0)));
+                        new KeyFrame(new Duration(1000), new KeyValue(opacity, 1.0)));
                 fadeIn.play();
             }
             return true;
